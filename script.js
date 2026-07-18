@@ -1,24 +1,19 @@
-FEEDOZ ENTERPRISE PREMIUM WEBSITE
+const button = document.getElementById('menuButton');
+const nav = document.getElementById('navMenu');
 
-Kandungan:
-- index.html
-- style.css
-- script.js
-- assets/feedoz-logo.jpeg
-- assets/portfolio-board.png
+button.addEventListener('click', () => {
+  nav.classList.toggle('open');
+});
 
-CARA BUKA DI KOMPUTER
-1. Ekstrak fail ZIP.
-2. Buka folder Feedoz Enterprise Premium.
-3. Klik dua kali fail index.html.
-4. Website akan dibuka dalam Chrome, Edge atau Safari.
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => nav.classList.remove('open'));
+});
 
-CARA SIARKAN ONLINE
-Muat naik semua fail ke:
-- Netlify
-- Hostinger / cPanel
-- GitHub Pages
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
 
-Maklumat pada website:
-WhatsApp: 019-399 6980
-E-mel: feedozenterprise@gmail.com
+document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+document.getElementById('year').textContent = new Date().getFullYear();
